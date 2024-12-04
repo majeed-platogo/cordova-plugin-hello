@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-hello" version="0.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>HelloWorld</name>
+    <js-module name="HelloWorld" src="www/HelloWorld.js">
+        <clobbers target="cordova.plugins.HelloWorld" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <preference name="GradlePluginKotlinEnabled" value="true" />
+            <feature name="HelloWorld">
+                <param name="android-package" value="com.cordova.hello.HelloWorld" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml" />
+        <source-file src="src/android/HelloWorld.kt" target-dir="java/com/cordova/hello" />
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <preference name="SwiftVersion" value="5.9"/>
+            <feature name="HelloWorld">
+                <param name="ios-package" value="HelloWorld" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/HelloWorld.swift" />
+    </platform>
+</plugin>
